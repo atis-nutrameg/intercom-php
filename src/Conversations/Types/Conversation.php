@@ -143,11 +143,13 @@ class Conversation extends JsonSerializableType
      * @var ?array<string, (
      *    string
      *   |int
+     *   |boolean
      *   |DateTime
      *   |CustomObjectInstanceList
+     *   |array
      * )> $customAttributes
      */
-    #[JsonProperty('custom_attributes'), ArrayType(['string' => new Union('string', 'integer', 'datetime', CustomObjectInstanceList::class)])]
+    #[JsonProperty('custom_attributes'), ArrayType(['string' => new Union('string', 'integer', 'datetime', 'boolean', CustomObjectInstanceList::class, 'array')])]
     private ?array $customAttributes;
 
     /**
