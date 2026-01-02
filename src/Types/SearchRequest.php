@@ -27,6 +27,12 @@ class SearchRequest extends JsonSerializableType
     private ?StartingAfterPaging $pagination;
 
     /**
+     * @var ?SortSearchRequest $sort
+     */
+    #[JsonProperty('sort')]
+    private ?SortSearchRequest $sort;
+
+    /**
      * @param array{
      *   query: (
      *    SingleFilterSearchRequest
@@ -40,6 +46,7 @@ class SearchRequest extends JsonSerializableType
     ) {
         $this->query = $values['query'];
         $this->pagination = $values['pagination'] ?? null;
+        $this->sort = $values['sort'] ?? null;
     }
 
     /**
@@ -79,6 +86,23 @@ class SearchRequest extends JsonSerializableType
     public function setPagination(?StartingAfterPaging $value = null): self
     {
         $this->pagination = $value;
+        return $this;
+    }
+
+    /**
+     * @return ?SortSearchRequest
+     */
+    public function getSort(): ?SortSearchRequest
+    {
+        return $this->sort;
+    }
+
+    /**
+     * @param ?SortSearchRequest $value
+     */
+    public function setSort(?SortSearchRequest $value = null): self
+    {
+        $this->sort = $value;
         return $this;
     }
 
